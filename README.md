@@ -27,3 +27,21 @@ order by num_of_occurrence DESC
 
 ![03](https://github.com/DataRajab/CASE-STUDY-QUESTIONS-AND-INSIGHTS/assets/147069032/bb697a28-5225-4d20-99fb-7200b792d97f)
 
+4. Show all columns for patient_id 542's most recent admission_date.
+
+SELECT *
+FROM admissions
+where patient_id = 542
+order by admission_date desc
+limit 1
+
+![04](https://github.com/DataRajab/CASE-STUDY-QUESTIONS-AND-INSIGHTS/assets/147069032/db835fa4-981c-4281-a5c0-df14b95f7d7d)
+
+5. Show patient_id, attending_doctor_id, and diagnosis for admissions that match one of the two criteria:
+1. patient_id is an odd number and attending_doctor_id is either 1, 5, or 19.
+2. attending_doctor_id contains a 2 and the length of patient_id is 3 characters.
+
+SELECT patient_id, attending_doctor_id, diagnosis
+FROM admissions
+where (patient_id % 2 = 1 and attending_doctor_id in (1,5,19))
+      OR (attending_doctor_id LIKE '%2%' AND LEN(patient_id) = 3)
