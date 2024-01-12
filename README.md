@@ -38,10 +38,14 @@ limit 1
 ![04](https://github.com/DataRajab/CASE-STUDY-QUESTIONS-AND-INSIGHTS/assets/147069032/db835fa4-981c-4281-a5c0-df14b95f7d7d)
 
 5. Show patient_id, attending_doctor_id, and diagnosis for admissions that match one of the two criteria:
-1. patient_id is an odd number and attending_doctor_id is either 1, 5, or 19.
-2. attending_doctor_id contains a 2 and the length of patient_id is 3 characters.
+
+   patient_id is an odd number and attending_doctor_id is either 1, 5, or 19.
+
+   attending_doctor_id contains a 2 and the length of patient_id is 3 characters.
 
 SELECT patient_id, attending_doctor_id, diagnosis
 FROM admissions
 where (patient_id % 2 = 1 and attending_doctor_id in (1,5,19))
       OR (attending_doctor_id LIKE '%2%' AND LEN(patient_id) = 3)
+
+![05](https://github.com/DataRajab/CASE-STUDY-QUESTIONS-AND-INSIGHTS/assets/147069032/ba6d3004-efe4-4632-b3b8-0c173deb5cd4)
