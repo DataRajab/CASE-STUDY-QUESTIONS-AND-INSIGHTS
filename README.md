@@ -49,3 +49,39 @@ where (patient_id % 2 = 1 and attending_doctor_id in (1,5,19))
       OR (attending_doctor_id LIKE '%2%' AND LEN(patient_id) = 3)
 
 ![05](https://github.com/DataRajab/CASE-STUDY-QUESTIONS-AND-INSIGHTS/assets/147069032/ba6d3004-efe4-4632-b3b8-0c173deb5cd4)
+
+6. Show patient_id, first_name, last_name, and attending doctor's specialty.
+Show only the patients who has a diagnosis as 'Epilepsy' and the doctor's first name is 'Lisa'
+
+SELECT p.patient_id, p.first_name, p.last_name, d.specialty
+FROM patients p
+join admissions a
+on p.patient_id=a.patient_id
+join doctors d
+on a.attending_doctor_id=d.doctor_id
+where a.diagnosis='Epilepsy' and d.first_name = 'Lisa'
+
+![12](https://github.com/DataRajab/CASE-STUDY-QUESTIONS-AND-INSIGHTS/assets/147069032/18ceac76-5f53-404b-9e84-d42d4c20483a)
+
+
+7. All patients who have gone through admissions, can see their medical documents on our site. Those patients are given a temporary password after their first admission. Show the patient_id and temp_password.
+
+The password must be the following, in order:
+1. patient_id
+2. the numerical length of patient's last_name
+3. year of patient's birth_date
+
+SELECT distinct p.patient_id, 
+       concat(
+       p.patient_id,
+       len(last_name),
+       year(birth_date)
+       ) as temp_password
+from patients p
+join admissions a
+on p.patient_id=a.patient_id
+
+![13](https://github.com/DataRajab/CASE-STUDY-QUESTIONS-AND-INSIGHTS/assets/147069032/c49de9ee-addf-4cb2-8b4e-e0985fea7a9d)
+
+
+8. 
